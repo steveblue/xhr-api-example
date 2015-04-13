@@ -23,9 +23,27 @@
 					<label><input type="password" placeholder="password" id="lf-password" data-psswrd-toggle></label>
 					<div class="button" id="lf-submit">login</div>
 				</form>
-				<h5 id="signup-btn"><a href="signup.html">Dont have an account?</a></h5>
+				<h5 id="signup-btn"><a href="#" id="lf-link">Dont have an account?</a></h5>
 			</div>
 
+			<div class="form" id="signup-form">
+				<form data-init-psswrd>
+					<label><input type="text" placeholder="email address" id="sf-email"></label>
+					<label><input type="text" placeholder="username" id="sf-username"></label>
+					<label><input type="password" placeholder="password" id="sf-password" data-psswrd-toggle></label>
+					<label><input type="text" placeholder="first name" id="sf-fname"></label>
+					<label><input type="text" placeholder="last name" id="sf-lname"></label>
+					<div class="button" id="sf-submit">create user</div>
+				</form>
+				<h5><a href="#" id="sf-link">Already have an account?</a></h5>
+			</div>
+
+
+			<div class="message" id="welcome">
+				<h1>Welcome</h1>
+			</div>
+
+			<div class="button" id="logout">logout</div>
 
 		</div><!-- #container -->
 		<script src="js/app.js"></script>

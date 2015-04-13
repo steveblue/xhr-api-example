@@ -83,6 +83,7 @@ gray: #A07F78;
   padding-bottom: 4px;
   margin-top: 60px;
   margin-bottom: 60px;
+  display:none;
 }
 
 .form input{
@@ -135,6 +136,7 @@ gray: #A07F78;
   padding-top:10px;
   padding-right:10px;
   cursor:pointer;
+  display:none;
 }
 
 #logout:hover{

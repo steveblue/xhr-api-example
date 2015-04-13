@@ -1,3 +1,32 @@
+var showLogin = function(){
+  document.getElementById('login-form').style.display='block';
+  document.getElementById('signup-form').style.display='none';
+  document.getElementById('welcome').style.display='none';
+  document.getElementById('logout').style.display='none';
+  if(document.body.classList.contains('welcome-page')){
+    document.body.classList.remove('welcome-page');
+  }
+};
+
+var showHome = function(){
+  document.getElementById('login-form').style.display='none';
+  document.getElementById('signup-form').style.display='none';
+  document.getElementById('welcome').style.display='block';
+  document.getElementById('logout').style.display='block';
+  document.body.classList.toggle('welcome-page');
+};
+
+
+var showSignup = function(){
+  document.getElementById('login-form').style.display='none';
+  document.getElementById('signup-form').style.display='block';
+  document.getElementById('welcome').style.display='none';
+  document.getElementById('logout').style.display='none';
+  if(document.body.classList.contains('welcome-page')){
+    document.body.classList.remove('welcome-page');
+  }
+};
+
 var signup = function(){
 
   var that = this;
@@ -11,7 +40,7 @@ var signup = function(){
 
     this.xhr.request('signup','POST',user).then(function(res){
       that.currentUser = res;
-      window.location = "/fewd-xhr/index.html";
+      showLogin();
     });
 
   };
@@ -47,6 +76,8 @@ if(signupForm){
   signup.call(signupForm);
   signupForm.init();
 }
+document.getElementById('sf-link').addEventListener('mousedown',showLogin);
+
 
 
 
@@ -55,9 +86,6 @@ var login = function(){
   var that = this;
 
   this.currentUser = {};
-
-
-
 
   this.init = function(){
     console.log('login form is online.');
@@ -74,10 +102,11 @@ var login = function(){
         password: document.getElementById('lf-password').value
       }
 
-
       xhr.request('login','POST',user).then(function(res){
         console.log(res);
-        window.location = "/fewd-xhr/welcome.html";
+        showHome();
+        document.getElementById('lf-username').value = "";
+        document.getElementById('lf-password').value = "";
       });
 
 
@@ -93,6 +122,7 @@ if(loginForm){
   login.call(loginForm);
   loginForm.init();
 }
+document.getElementById('lf-link').addEventListener('mousedown',showSignup);
 
 
 
@@ -101,7 +131,7 @@ if(logoutButton){
   logoutButton.addEventListener("mousedown",function(ev){
       var xhr = new xhrHandler();
       xhr.request('logout','GET').then(function(res){
-        window.location = "/fewd-xhr/index.html";
+        showLogin();
       });
     });
 }
@@ -111,3 +141,6 @@ var xhr = new xhrHandler();
 xhr.request('user','GET').then(function(res){
   console.log(res);
 });
+
+
+showLogin();
