@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="A simple example of how Javascript can manipulate DOM.">
+    	<meta name="keywords" content="General Assembly, Javascript, JS">
+
+		<title>Login</title>
+
+		<!-- external CSS link -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/style.css">
+<!--		<script src="js/lib/psswrd.js"></script>-->
+		<script src="js/xhr.js"></script>
+	</head>
+	<body>
+		<div id="container">
+
+			<div class="form" id="login-form">
+				<form data-init-psswrd>
+					<label><input type="text" placeholder="username" id="lf-username"></label>
+					<label><input type="password" placeholder="password" id="lf-password" data-psswrd-toggle></label>
+					<div class="button" id="lf-submit">login</div>
+				</form>
+				<h5 id="signup-btn"><a href="signup.html">Dont have an account?</a></h5>
+			</div>
+
+
+		</div><!-- #container -->
+		<script src="js/app.js"></script>
+	</body>
+</html>

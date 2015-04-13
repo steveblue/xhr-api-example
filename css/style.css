@@ -1,0 +1,164 @@
+/*
+Project Name: Blank Template
+Client: Your Client
+Author: Your Name
+Developer @GA in NYC
+*/
+
+
+/******************************************
+/* SETUP
+/*******************************************/
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+     color: #121212;
+     font-size: 16px;
+     line-height: 1.2em;
+     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+/* Center the container */
+body {
+	width: 100%;
+  height:100%;
+	margin: 0;
+  padding: 0;
+  background: #BBCFAE;
+}
+
+a:link,a:visited{
+  color:#12EA85;
+}
+a:hover,a:active{
+  color:#14FF91;
+}
+/*
+
+reg
+
+green: #12EA85;
+gray: #BBCFAE;
+ltpink: #FBBBB7;
+medpink: #FB9CAF;
+brpink: #FA5FA3;
+
+
+active
+
+green: #14FF91;
+gray: #A07F78;
+
+
+*/
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+.form{
+  position:relative;
+  width: 320px;
+  height: auto;
+  background: #BCBCBC;
+  top:10%;
+  left:50%;
+  margin-left:-180px;
+  clear:both;
+  padding-bottom: 4px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.form input{
+  width:300px;
+  height:48px;
+  border: 0 none;
+  padding: 10px;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.form input:focus,.form input:active{
+  outline: none;
+}
+
+
+.form .button{
+  width:300px;
+  height:48px;
+  border: 0 none;
+  padding: 10px;
+  margin: 10px;
+  background: #12EA85;
+  font-size: 18px;
+  color:#FFFFFF;
+  text-align:center;
+  cursor:pointer;
+}
+
+.form .button:hover{
+  background: #14FF91;
+}
+
+.form h5{
+  padding:10px;
+}
+
+#signup-btn{
+  cursor:pointer;
+  font-weight:400;
+}
+
+
+#logout{
+  position:absolute;
+  top:0;
+  right:0;
+  color: #000;
+  font-weight:500;
+  padding-top:10px;
+  padding-right:10px;
+  cursor:pointer;
+}
+
+#logout:hover{
+  font-weight:600;
+  color:#14FF91;
+}
+
+.message{
+  position:relative;
+  width: 320px;
+  height: auto;
+  background: transparent;
+  top:10%;
+  left:50%;
+  margin-left:-180px;
+  clear:both;
+  padding-bottom: 4px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  font-size:64px;
+  text-align:center;
+}
+
+
+.welcome-page{
+  background:#FBBBB7;
+}
