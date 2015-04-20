@@ -20,30 +20,51 @@ Developer @GA in NYC
 /******************************************
 /* BASE STYLES
 /*******************************************/
-
 body {
-     color: #121212;
-     font-size: 16px;
-     line-height: 1.2em;
-     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  position:absolute;
+  width: 100%;
+  height:100%;
+  margin: 0;
+  padding: 0;
+  color: #121212;
+  font-size: 16px;
+  line-height: 1.2em;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  overflow:hidden;
+  background: #EFEFEF;
 }
-
 
 /******************************************
 /* LAYOUT
 /*******************************************/
 
-/* Center the container */
-body {
-	width: 100%;
-  height:100%;
-	margin: 0;
-  padding: 0;
-  background: #74B3CE;
+#container{
+    position:absolute;
+    width:100%;
+    height:auto;
+    overflow:hidden;
+
+}
+
+#bg{
+    position:absolute;
+    width:200%;
+    height:200%;
+    top:-33.3333%;
+    left:-33.3333%;
+    background:url('../img/photos/dreaming-of-spring-by-steve-belovarich.jpg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    -webkit-filter: blur(50px);
+    -moz-filter: blur(50px);
+    -o-filter: blur(50px);
+    -ms-filter: blur(50px);
+    filter: blur(50px);
+    overflow:hidden;
 }
 
 a:link,a:visited{
-  color:#12EA85;
+  color:#EFEFEF;
 }
 a:hover,a:active{
   color:#14FF91;
@@ -71,11 +92,20 @@ gray: #A07F78;
 /* ADDITIONAL STYLES
 /*******************************************/
 
+#sf-image-canvas{
+    border-radius: 120px;
+    background-color:#FFFFFF;
+    width:240px;
+    height:240px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
 .form{
   position:relative;
   width: 320px;
   height: auto;
-  background: #BCBCBC;
+  background: #DCDCDC;
   top:10%;
   left:50%;
   margin-left:-180px;
@@ -93,6 +123,12 @@ gray: #A07F78;
   padding: 10px;
   margin: 10px;
   font-size: 18px;
+}
+
+input.upload {
+    font-size: 1em;
+    line-height: 0em;
+    padding-left:0px;
 }
 
 .form input:focus,.form input:active{
@@ -119,6 +155,10 @@ gray: #A07F78;
 
 .form h5{
   padding:10px;
+}
+
+#login-form{
+    margin-top: 15%;
 }
 
 #signup-btn{
@@ -160,7 +200,29 @@ gray: #A07F78;
   text-align:center;
 }
 
+.card{
+    position:relative;
+    width:22.25%;
+    margin-left: 2.2%;
+    margin-right: 2.2%;
+    margin-top: 40px;
+    height:auto;
+    float:left;
+    background:#FFFFFF;
+    text-align:center;
+    border-radius: 10px;
+}
 
-.welcome-page{
-  background:#FBBBB7;
+.card .photo{
+    position:relative;
+    width:120px;
+    height:120px;
+    border-radius: 60px;
+    margin: 0 auto;
+    margin-top:40px;
+}
+
+.card h3{
+    padding-top:6px;
+    padding-bottom:40px;
 }

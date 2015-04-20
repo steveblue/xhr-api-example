@@ -14,6 +14,8 @@ var showHome = function(){
   document.getElementById('welcome').style.display='block';
   document.getElementById('logout').style.display='block';
   document.body.classList.toggle('welcome-page');
+  document.getElementById('bg').style.display='none';
+  getUsers();
 };
 
 
@@ -27,17 +29,38 @@ var showSignup = function(){
   }
 };
 
+var getUsers = function(){
+    var container = document.getElementById('welcome');
+    this.xhr.request('user','GET').then(function(res){
+      console.log(res);
+      res.forEach(function(card){
+          var div = document.createElement('div');
+          div.classList.add('card');
+          var img = new Image();
+          img.src = 'http://localhost:5555/'+card.avatar.image;
+          img.classList.add('photo');
+          div.appendChild(img);
+          var h3 = document.createElement('h3');
+          h3.innerHTML = card.firstName+' '+card.lastName;
+          div.appendChild(h3);
+          container.appendChild(div);
+      });
+    });
+};
+
 var signup = function(){
 
   var that = this;
 
+  this.canvas = document.getElementById('sf-image-canvas');
+  this.ctx = this.canvas.getContext('2d');
   this.currentUser = {};
   this.xhr = new xhrHandler();
-
-
+  this.user = {};
+  this.image;
 
   this.createUser = function(user){
-
+    console.log(user);
     this.xhr.request('signup','POST',user).then(function(res){
       that.currentUser = res;
       showLogin();
@@ -45,26 +68,48 @@ var signup = function(){
 
   };
 
+  this.handleImage = function(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            that.canvas.width = 240;
+            that.canvas.height = 240;
+            that.ctx.drawImage(img,0,0);
+            setTimeout(function(){
+                var data = that.canvas.toDataURL("image/jpeg", 0.8);
+                that.image = data;
+            },1000);
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);
+
+  };
+
   this.init = function(){
-    console.log('signup form is online.');
+
+    var imageLoader = document.getElementById('sf-image-loader');
+    imageLoader.addEventListener('change', that.handleImage, false);
+
     var submit = document.getElementById('sf-submit');
     submit.addEventListener("mousedown",function(ev){
 
       ev.preventDefault();
 
-      var user = {
-        email: document.getElementById('sf-email').value,
-        firstName: document.getElementById('sf-fname').value,
-        lastName: document.getElementById('sf-lname').value,
-        username: document.getElementById('sf-username').value,
-        password: document.getElementById('sf-password').value
-      }
-
-      that.createUser(user);
+      that.user.email = document.getElementById('sf-email').value,
+      that.user.firstName = document.getElementById('sf-fname').value,
+      that.user.lastName = document.getElementById('sf-lname').value,
+      that.user.username = document.getElementById('sf-username').value,
+      that.user.password = document.getElementById('sf-password').value;
+      that.user.avatar = {
+          image : that.image
+      };
+      that.createUser(that.user);
 
 
       return false;
-    });
+  },false);
 
   };
 
@@ -104,7 +149,13 @@ var login = function(){
 
       xhr.request('login','POST',user).then(function(res){
         console.log(res);
-        showHome();
+        if(res!=='Unauthorized'){
+            showHome();
+        }
+        else{
+            //
+        }
+
         document.getElementById('lf-username').value = "";
         document.getElementById('lf-password').value = "";
       });
@@ -130,9 +181,16 @@ var logoutButton = document.getElementById('logout');
 if(logoutButton){
   logoutButton.addEventListener("mousedown",function(ev){
       var xhr = new xhrHandler();
+      document.getElementById('bg').style.display='block';
       xhr.request('logout','GET').then(function(res){
         showLogin();
+        // clean up cards
+        var cards = document.querySelectorAll('.card');
+        for(var i=0; i < cards.length; i++){
+            cards[i].parentNode.removeChild(cards[i]);
+        }
       });
+
     });
 }
 
